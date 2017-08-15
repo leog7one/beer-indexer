@@ -75,8 +75,10 @@ class BeersController < ApplicationController
   delete "/beers/:id" do
     if logged_in?(session)
       @beer = Beer.find_by_id(params[:id])
+      @brewery = Brewery.find_by_id(params[:id])
       if @beer.user_id == current_user(session).id
         @beer.destroy
+        @brewery.destroy
         redirect '/beers'
       end
     redirect "/"
