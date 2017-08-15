@@ -32,7 +32,6 @@ class BeersController < ApplicationController
   get "/beers/:id" do
     if logged_in?(session)
       @beer = Beer.find_by_id(params[:id])
-      @brewery = Brewery.find_by_id(params[:id])
     erb :"/beers/show.html"
     else
     redirect '/'
