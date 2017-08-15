@@ -1,1 +1,17 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<div class="container">
+
+<h1>Edit Beer</h1>
+
+<h3>Beer to be Edited: <%= @beer.name %></h3>
+
+<form action="/beers/<%=@beer.id%>" method="POST">
+<input id="hidden" type="hidden" name="_method" value="patch">
+		<label>Name: </label><input type="text" name="name" id="name" value="<%=@beer.name%>">
+		<label>Brewery: </label><input type="text" name="brewery" id="brewery" value="<%=@brewery.name%>">
+		<label>ABV: </label><input type="number" name="abv" id="abv" value="<%=@beer.abv%>">
+		<label>Style: </label><input type="text" name="style" id="style" value="<%=@beer.style%>">
+		<label>Description</label><input type="text" name="description" id="description" value="<%=@beer.description%>">
+
+		<input class="btn btn-secondary" type="submit" value="Submit">
+	</form>
+</div>

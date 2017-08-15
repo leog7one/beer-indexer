@@ -5,3 +5,9 @@ ABV: <%= @beer.abv %><br>
 <br></br>
 Description:<br></br>
  <%= @beer.description %>
+
+ <form method="post" action="/beers/<%=@beer.id%>"  >
+ 	<input id="hidden" type="hidden" name="_method" value="delete">
+
+ 	<input class="btn btn-secondary" type="submit" value="Delete Beer">
+ </form>
