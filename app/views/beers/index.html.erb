@@ -1,1 +1,3 @@
-<h1>This is the Model's index page.</h1>
+<% @beers.each do |beer|  %>
+	<li><%= beer.name  %></li>
+<% end %>
