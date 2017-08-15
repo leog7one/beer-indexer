@@ -22,7 +22,8 @@ class BeersController < ApplicationController
       redirect '/beers/new'
     else
       @beer = current_user(session).beers.create(name: params[:name], style: params[:style], abv: params[:abv], description: params[:description])
-      @brewery = Brewery.find_or_create_by(name: params[:brewery])
+      @beer.brewery = Brewery.find_or_create_by(name: params[:brewery])
+      @beer.save
     redirect "/beers"
   end
   end
@@ -31,7 +32,6 @@ class BeersController < ApplicationController
   get "/beers/:id" do
     if logged_in?(session)
       @beer = Beer.find_by_id(params[:id])
-      @brewery = Brewery.find_by_id(params[:id])
     erb :"/beers/show.html"
     else
     redirect '/'
@@ -42,7 +42,6 @@ class BeersController < ApplicationController
   get "/beers/:id/edit" do
     if logged_in?(session)
       @beer = Beer.find_by_id(params[:id])
-      @brewery = Brewery.find_by_id(params[:id])
       if @beer.user_id == current_user(session).id
         erb :"/beers/edit.html"
       else
@@ -59,14 +58,12 @@ class BeersController < ApplicationController
     redirect "/beers/#{params[:id]}/edit"
   else
     @beer = Beer.find_by_id(params[:id])
-    @brewery = Brewery.find_by_id(params[:id])
     @beer.name = params[:name]
-    @brewery.name = params[:brewery]
+    @beer.brewery = Brewery.find_or_create_by(name: params[:brewery])
     @beer.abv = params[:abv]
     @beer.style = params[:style]
     @beer.description = params[:description]
     @beer.save
-    @brewery.save
     redirect "/beers/#{@beer.id}"
   end
   end
@@ -75,10 +72,10 @@ class BeersController < ApplicationController
   delete "/beers/:id" do
     if logged_in?(session)
       @beer = Beer.find_by_id(params[:id])
-      @brewery = Brewery.find_by_id(params[:id])
+
       if @beer.user_id == current_user(session).id
         @beer.destroy
-        @brewery.destroy
+
         redirect '/beers'
       end
     redirect "/"

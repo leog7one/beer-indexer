@@ -2,7 +2,12 @@ class BreweriesController < ApplicationController
 
   # GET: /breweries
   get "/breweries" do
+    if logged_in?(session)
+    @breweries = Brewery.all
     erb :"/breweries/index.html"
+  else
+    redirect '/'
+  end
   end
 
   # GET: /breweries/new
@@ -17,7 +22,13 @@ class BreweriesController < ApplicationController
 
   # GET: /breweries/5
   get "/breweries/:id" do
+
+    if logged_in?(session)
+     @brewery = Brewery.find_by_id(params[:id])
     erb :"/breweries/show.html"
+  else
+    redirect '/'
+  end
   end
 
   # GET: /breweries/5/edit

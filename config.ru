@@ -9,3 +9,4 @@ use Rack::MethodOverride
 run ApplicationController
 use UsersController
 use BeersController
+use BreweriesController

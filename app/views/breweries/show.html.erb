@@ -1,1 +1,8 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1>Brewery Name: <%= @brewery.name %></h1>
+
+<h3>Beers:</h3>
+ <br></br>
+
+ <% @brewery.beers.each do |beer| %>
+	<li><a href="/beers/<%=beer.id%>"><%= beer.name %></a></li>
+<% end %>

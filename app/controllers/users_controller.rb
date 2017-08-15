@@ -41,7 +41,11 @@ class UsersController < ApplicationController
 
   # GET: /users/5
   get "/users/:id" do
+    if logged_in?(session)
+     @user = User.find_by_id(params[:id])
+     @beers = @user.beers
     erb :"/users/show.html"
+  end
   end
 
   # GET: /users/5/edit
