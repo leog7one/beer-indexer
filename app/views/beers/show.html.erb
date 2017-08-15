@@ -1,5 +1,5 @@
 Beer Name: <%= @beer.name %> <br>
-Brewed By: <%= @beer.brewery.name %><br>
+Brewed By: <a href="/breweries/<%=@brewery.id%>"><%= @beer.brewery.name %></a><br>
 Style: <%= @beer.style %><br>
 ABV: <%= @beer.abv %><br>
 <br></br>
