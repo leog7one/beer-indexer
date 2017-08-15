@@ -28,8 +28,13 @@ class BeersController < ApplicationController
 
   # GET: /beers/5
   get "/beers/:id" do
-    
+    if logged_in?(session)
+      @beer = Beer.find_by_id(params[:id])
+      @brewery = Brewery.find_by_id(params[:id])
     erb :"/beers/show.html"
+  else
+    redirect '/'
+  end
   end
 
   # GET: /beers/5/edit
