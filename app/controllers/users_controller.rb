@@ -74,13 +74,14 @@ class UsersController < ApplicationController
 
   # PATCH: /users/5
   patch "/users/:id" do
-    if params[:username] == "" || params[:email] == "" || params[:password] == ""
+    if params[:username] == "" || params[:email] == ""
       redirect "/users/#{params[:id]}/edit"
     else
       @user = User.find_by_id(params[:id])
       @user.username = params[:username]
       @user.email = params[:email]
-      @user.password_digest = params[:password]
+      @user.password = params[:password]
+      @user.password_confirmation = params[:password]
       @user.save
       redirect "/users/#{@user.id}"
     end
