@@ -1,9 +1,11 @@
+
+
 class BeersController < ApplicationController
+
 
   # GET: /beers
   get "/beers" do
     @beers = Beer.all
-    @brewery = Brewery.all
     erb :"/beers/index.html"
   end
 
@@ -12,6 +14,7 @@ class BeersController < ApplicationController
     if logged_in?(session)
     erb :"/beers/new.html"
   else
+    flash[:error] = "Please login to enter a new Beer."
     redirect '/login'
   end
   end
@@ -30,12 +33,8 @@ class BeersController < ApplicationController
 
   # GET: /beers/5
   get "/beers/:id" do
-    if logged_in?(session)
-      @beer = Beer.find_by_id(params[:id])
+    @beer = Beer.find_by_id(params[:id])
     erb :"/beers/show.html"
-    else
-    redirect '/'
-    end
   end
 
   # GET: /beers/5/edit
@@ -48,7 +47,8 @@ class BeersController < ApplicationController
        redirect '/beers'
       end
     else
-  redirect '/'
+       flash[:error] = "Must be user whom entered Beer to make changes."
+  redirect '/beers'
   end
   end
 
@@ -70,15 +70,19 @@ class BeersController < ApplicationController
 
   # DELETE: /beers/5/delete
   delete "/beers/:id" do
-    if logged_in?(session)
-      @beer = Beer.find_by_id(params[:id])
-
-      if @beer.user_id == current_user(session).id
-        @beer.destroy
-
-        redirect '/beers'
+    if !logged_in?(session)
+        flash[:error] = "Must be user whom entered Beer to make changes."
+      redirect '/beers'
+    elsif logged_in?(session)
+        @beer = Beer.find_by_id(params[:id])
+        if @beer.user_id == current_user(session).id
+          @beer.destroy
+          redirect '/beers'
+      else
+        flash[:error] = "Must be user whom entered Beer to make changes."
+      redirect '/beers'
       end
-    redirect "/"
+    end
   end
-  end
+
 end

@@ -1,6 +1,7 @@
+
+
 class UsersController < ApplicationController
 
-  
 
   # GET: /users/new
   get "/signup" do
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
   # POST: /users
   post "/signup" do
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
+      flash[:error] = "Please fill in all fields."
       redirect '/signup'
     else
       user = User.new(username: params[:username], email: params[:email], password: params[:password])
@@ -35,6 +37,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
     redirect "/beers"
     else
+      flash[:error] = "Incorrect Username or Password"
     redirect '/login'
     end
   end
@@ -43,19 +46,44 @@ class UsersController < ApplicationController
   get "/users/:id" do
     if logged_in?(session)
      @user = User.find_by_id(params[:id])
+     if @user.id == current_user(session).id
      @beers = @user.beers
     erb :"/users/show.html"
+    else
+    flash[:error] = "Must be logged in to view your beer profile."
+    redirect '/beers'
+    end
   end
   end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
-    erb :"/users/edit.html"
+     if logged_in?(session)
+      @user = User.find_by_id(params[:id])
+      if @user.id == current_user(session).id
+        erb :"/users/edit.html"
+      else
+       redirect '/beers'
+      end
+    else
+       flash[:error] = "Must be logged in to edit User Profile."
+  redirect '/beers'
+  end
+   
   end
 
   # PATCH: /users/5
   patch "/users/:id" do
-    redirect "/users/:id"
+    if params[:username] == "" || params[:email] == "" || params[:password] == ""
+      redirect "/users/#{params[:id]}/edit"
+    else
+      @user = User.find_by_id(params[:id])
+      @user.username = params[:username]
+      @user.email = params[:email]
+      @user.password_digest = params[:password]
+      @user.save
+      redirect "/users/#{@user.id}"
+    end
   end
 
   # DELETE: /users/5/delete

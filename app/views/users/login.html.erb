@@ -1,3 +1,7 @@
+<% if flash.has?(:error) %>
+  <%= flash[:error] %>
+<% end %>
+
 <div class="container" >
     
 <h2>Login</h2>
@@ -7,6 +11,7 @@
 	<label>Password:</label><input type="password" name="password"></br>
     
 	   <input class="btn btn-secondary" type="submit" value="Login">
+
 </form>
 
 <br></br>

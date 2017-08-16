@@ -1,3 +1,7 @@
+<% if flash.has?(:error) %>
+  <%= flash[:error] %>
+<% end %>
+
 <div class="container">
 	<h1>Add a New Beer<h1>
 	<form action="/beers" method="POST">

@@ -12,6 +12,8 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'rack-flash3', '~> 1.0', '>= 1.0.5'
+gem 'sinatra-flash', '~> 0.3.0'
 
 group :test do
   gem 'rspec'
