@@ -2,11 +2,14 @@
 
 <h2>Hello, <%=@user.username %></h2>
 
+<a class="btn btn-primary" href="/users/<%=current_user(session).id%>/edit" role="button">Edit User Profile</a>
+
 
 <h3>Your Beers :</h3>
+
 </br>
 <% @beers.each do |beer| %>
-	<li><a href="/beers/<%=beer.id%>"><%= beer.name  %></a></li>
+	<li><a href="/beers/<%=beer.id%>"><%= beer.name %></a></li>
 <% end %>
 
 
