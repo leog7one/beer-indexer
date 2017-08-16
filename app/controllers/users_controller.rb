@@ -44,7 +44,10 @@ class UsersController < ApplicationController
 
   # GET: /users/5
   get "/users/:id" do
-    if logged_in?(session)
+     if !logged_in?(session)
+        flash[:error] = "Must be logged in to view your beer profile."
+      redirect '/beers'
+    elsif logged_in?(session)
      @user = User.find_by_id(params[:id])
      if @user.id == current_user(session).id
      @beers = @user.beers
@@ -89,7 +92,19 @@ class UsersController < ApplicationController
 
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
-    redirect "/users"
+    if !logged_in?(session)
+        flash[:error] = "Must be user whom created account to make changes."
+      redirect '/beers'
+    elsif logged_in?(session)
+        @user = User.find_by_id(params[:id])
+        if @user.id == current_user(session).id
+          @user.destroy
+          redirect '/beers'
+        else
+        flash[:error] = "Must be user whom created account to make changes."
+        redirect '/beers'
+        end
+      end
   end
 
 get '/logout' do

@@ -5,3 +5,13 @@
 <% @beers.each do |beer|  %>
 	<li><a href="/beers/<%=beer.id%>"><%= beer.name %></a></li>
 <% end %>
+
+<br></br>
+
+<% if logged_in?(session) %>
+        <li><a href="/users/<%=current_user(session).id%>">User Profile</a></li>
+        <li><a href="/logout">Logout</li>
+        <% else %>
+        <li><a href="/signup">Sign Up</a></li>
+        <li><a href="/login">Login</a></li>
+<% end %>

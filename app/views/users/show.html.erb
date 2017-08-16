@@ -1,3 +1,5 @@
+
+
 <h2>Hello, <%=@user.username %></h2>
 
 
@@ -6,3 +8,10 @@
 <% @beers.each do |beer| %>
 	<li><a href="/beers/<%=beer.id%>"><%= beer.name  %></a></li>
 <% end %>
+
+
+<form method="post" action="/users/<%=@user.id%>"  >
+ 	<input id="hidden" type="hidden" name="_method" value="delete">
+
+ 	<input class="btn btn-secondary" type="submit" value="Delete User">
+ </form>

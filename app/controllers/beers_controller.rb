@@ -5,8 +5,10 @@ class BeersController < ApplicationController
 
   # GET: /beers
   get "/beers" do
-    @beers = Beer.all
-    erb :"/beers/index.html"
+
+      @beers = Beer.all
+      erb :"/beers/index.html"
+   
   end
 
   # GET: /beers/new
