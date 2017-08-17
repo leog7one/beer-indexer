@@ -1,10 +1,8 @@
-<% if flash.has?(:error) %>
-  <%= flash[:error] %>
-<% end %>
-
-
 
  <div class="form-group"> 
+     <% if flash.has?(:error) %>
+  <%= flash[:error] %>
+<% end %>
     <h1>Add a New Beer</h1>
               
      <form action="/beers" method="POST">

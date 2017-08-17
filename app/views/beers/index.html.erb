@@ -1,8 +1,9 @@
-<% if flash.has?(:error) %>
-  <%= flash[:error] %>
-<% end %>
 
 <div class="container">
+    <% if flash.has?(:error) %>
+  <%= flash[:error] %>
+<% end %>
+    
     <h1 class="text-left">Beer List</h1>
 
     <% @beers.each do |beer|  %>

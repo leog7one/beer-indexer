@@ -22,10 +22,16 @@
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+    <% if logged_in?(session) %>
      <a class="navbar-brand" href="/beers">
-    <img src="/images/Beer-icon.png" width="50" height="50" class="d-inline-block align-center" alt="">
-    Beer Indexer
-  </a>
+        <img src="/images/Beer-icon.png" width="50" height="50" class="d-inline-block align-center" alt=""> Beer Indexer
+    </a>
+    <% else %>
+        <a class="navbar-brand" href="/">
+        <img src="/images/Beer-icon.png" width="50" height="50" class="d-inline-block align-center" alt="">
+        Beer Indexer
+    </a>
+    <% end %>
   <div class="collapse navbar-collapse ml-auto" id="navbarNav">
     <ul class="navbar-nav ml-auto">
     <% if logged_in?(session) %>
