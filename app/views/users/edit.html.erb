@@ -1,17 +1,24 @@
-<div class="container">
 
+<div class="form-group"> 
+  
 
-
-<h1>Edit User</h1>
-
-<h3>User to be Edited: <%= @user.username %></h3>
+<h1>Edit User : <%= @user.username %></h3></h1>
 
 <form action="/users/<%=@user.id%>" method="POST">
 <input id="hidden" type="hidden" name="_method" value="patch">
-		<label>Username: </label><input type="text" name="username" id="username" value="<%=@user.username%>">
-		<label>Email: </label><input type="text" name="email" id="email" value="<%=@user.email%>">
-		<label>Password: </label><input type="text" name="password" id="password">
-
-		<input class="btn btn-secondary" type="submit" value="Submit">
+		<label>Username: </label><input type="text" name="username" id="username" value="<%=@user.username%>" class="form-control">
+		<label>Email: </label><input type="text" name="email" id="email" value="<%=@user.email%>" class="form-control">
+		<label>Password: </label><input type="text" name="password" id="password" class="form-control">
+    </br>
+		<input class="btn btn-secondary" type="submit" value="Update Info" class="form-control">
 	</form>
-</div>
+
+    </br>
+<form method="post" action="/users/<%=@user.id%>"  >
+ 	<input id="hidden" type="hidden" name="_method" value="delete">
+
+ 	<input class="btn btn-secondary" type="submit" value="Delete User" class="form-control">
+ </form>
+
+    </div>
+    

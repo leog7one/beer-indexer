@@ -1,13 +1,25 @@
-Beer Name: <%= @beer.name %> <br>
-Brewed By: <a href="/breweries/<%=@beer.brewery.id%>"><%= @beer.brewery.name %></a><br>
-Style: <%= @beer.style %><br>
-ABV: <%= @beer.abv %><br>
-<br></br>
-Description:<br></br>
- <%= @beer.description %>
+<div class="container">
+  <h1 class="text-left">Beer Info</h1>  
+    
+    Beer Name: <%= @beer.name %> <br>
+    Brewed By: <a href="/breweries/<%=@beer.brewery.id%>"><%= @beer.brewery.name %></a><br>
+    Style: <%= @beer.style %><br>
+    ABV: <%= @beer.abv %><br>
+    <br></br>
+    Description:<br>
+     <%= @beer.description %>
+    <br></br>
 
- <form method="post" action="/beers/<%=@beer.id%>"  >
- 	<input id="hidden" type="hidden" name="_method" value="delete">
+    <% if logged_in?(session) %>
+    <% @beer = Beer.find_by_id(params[:id]) %>
+          <% if @beer.user_id == current_user(session).id %>
+     <form method="post" action="/beers/<%=@beer.id%>"  >
+        <input id="hidden" type="hidden" name="_method" value="delete">
 
- 	<input class="btn btn-secondary" type="submit" value="Delete Beer">
- </form>
+        <input class="btn btn-secondary" type="submit" value="Delete Beer">
+     </form>
+        <br>
+        <button type="button" class="btn btn-secondary"><a href="/beers/<%=@beer.id%>">Edit Beer</a></button>
+        <% end %>
+    <% end %>
+</div>

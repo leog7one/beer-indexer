@@ -1,4 +1,4 @@
-<div class="container">
+<div class="form-group"> 
 
 <h1>Edit Beer</h1>
 
@@ -6,11 +6,11 @@
 
 <form action="/beers/<%=@beer.id%>" method="POST">
 <input id="hidden" type="hidden" name="_method" value="patch">
-		<label>Name: </label><input type="text" name="name" id="name" value="<%=@beer.name%>">
-		<label>Brewery: </label><input type="text" name="brewery" id="brewery" value="<%=@beer.brewery.name%>">
-		<label>ABV: </label><input type="number" name="abv" id="abv" value="<%=@beer.abv%>">
-		<label>Style: </label><input type="text" name="style" id="style" value="<%=@beer.style%>">
-		<label>Description</label><input type="text" name="description" id="description" value="<%=@beer.description%>">
+		<label>Name: </label><input type="text" name="name" id="name" value="<%=@beer.name%>" class="form-control">
+		<label>Brewery: </label><input type="text" name="brewery" id="brewery" value="<%=@beer.brewery.name%>" class="form-control">
+		<label>ABV: </label><input type="number" name="abv" id="abv" value="<%=@beer.abv%>" class="form-control">
+		<label>Style: </label><input type="text" name="style" id="style" value="<%=@beer.style%>" class="form-control">
+		<label>Description</label><input type="text" name="description" id="description" value="<%=@beer.description%>" class="form-control">
 
 		<input class="btn btn-secondary" type="submit" value="Submit">
 	</form>

@@ -10,20 +10,70 @@
   <title>BeerIndexer</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    
+  <link rel="stylesheet" href="/stylesheets/main.css">
 
-
-  <link rel="stylesheet" href="/stylesheets/main.css" />
 </head>
 <body>
+    
+<nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+     <a class="navbar-brand" href="/beers">
+    <img src="/images/Beer-icon.png" width="50" height="50" class="d-inline-block align-center" alt="">
+    Beer Indexer
+  </a>
+  <div class="collapse navbar-collapse ml-auto" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+    <% if logged_in?(session) %>
+      <li class="nav-item active">
+        <a class="nav-link" href="/beers">Beers<span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/breweries">Breweries</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/beers/new">Add A Beer</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/<%=current_user(session).id%>">Beer Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/<%=current_user(session).id%>/edit">User Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+        <% else %>
+        <li class="nav-item">
+        <a class="nav-link" href="/beers">Beer List</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/breweries">Breweries</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/signup">Sign Up</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+        <%end%>
+    </ul>
+  </div>
+</nav>
+     
   <div class="wrapper">
-
+      <div class="booyah-box"
       <%= yield %>
-
+   
     <footer class="branding">
-      <small>&copy; 2017 <strong>BeerIndexer</strong></small>
+      <small>&copy; 2017 <strong>Beer Indexer</strong></small>
     </footer>
+     </div>
+
   </div>
 
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

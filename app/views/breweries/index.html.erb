@@ -1,4 +1,8 @@
+<div class="container">
+  <h1 class="text-left">Breweries</h1> 
+
 <% @breweries.each do |brewery|  %>
 	<li><a href="/breweries/<%=brewery.id%>"><%= brewery.name  %></a></li>
 <% end %>
 
+</div>

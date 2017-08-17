@@ -1,8 +1,6 @@
+<div class="container">
+  <h1 class="text-left"><%=@user.username %>'s Beer Profile</h1> 
 
-
-<h2>Hello, <%=@user.username %></h2>
-
-<a class="btn btn-primary" href="/users/<%=current_user(session).id%>/edit" role="button">Edit User Profile</a>
 
 
 <h3>Your Beers :</h3>
@@ -13,8 +11,3 @@
 <% end %>
 
 
-<form method="post" action="/users/<%=@user.id%>"  >
- 	<input id="hidden" type="hidden" name="_method" value="delete">
-
- 	<input class="btn btn-secondary" type="submit" value="Delete User">
- </form>

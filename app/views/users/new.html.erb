@@ -3,18 +3,18 @@
   <%= flash[:error] %>
 <% end %>
 
-<div class="container">
 
+ <div class="form-group"> 
 
 	<h1>Sign Up for Beer Indexer</h1>
 
 	<form action="/signup" method="POST">
-	Username:<input type="text" name="username"></br>
-	Email:<input type="text" name="email" id="email"></br>
-	Password:<input type="password" name="password"></br>
+	<label>Username:</label><input type="text" name="username" class="form-control"></br>
+	<label>Email:</label><input type="text" name="email" id="email" class="form-control"></br>
+	<label>Password:</label><input type="password" name="password" class="form-control"></br>
 
 
-	<input class="btn btn-secondary" type="submit" value="Sign Up" name="Sign Up">
+	<input class="btn btn-secondary" type="submit" value="Sign Up" name="Sign Up" class="form-control">
 	</form>
 
 </div>
