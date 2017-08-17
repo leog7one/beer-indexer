@@ -5,7 +5,7 @@ Beer Indexer is exactly what it is titled, An Index For Beers!
 
 Want to find some information on new beers? Look at the Beer List and Breweries, no Sign Up required.
 
-Want to Add a Favorite Beer so others can check it out? Add the beer when you logged in!
+Want to Add a Favorite Beer so others can check it out? Add the beer when you're logged in!
 No worries of someone changing the info on your beer as only have access to do that.
 
 Bottoms Up!
