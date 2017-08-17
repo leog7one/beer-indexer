@@ -5,7 +5,11 @@ class UsersController < ApplicationController
 
   # GET: /users/new
   get "/signup" do
-    erb :"/users/new.html"
+      if logged_in?(session)
+        redirect "/beers"
+     else
+        erb :"/users/new.html"
+      end
   end
 
   # POST: /users
