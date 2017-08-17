@@ -3,10 +3,10 @@
 <% end %>
 
 <div class="container">
-<h1 class="text-left">Beer List</h1>
+    <h1 class="text-left">Beer List</h1>
 
-<% @beers.each do |beer|  %>
-	<li><a href="/beers/<%=beer.id%>"><%= beer.name %></a></li>
-<% end %>
+    <% @beers.each do |beer|  %>
+        <li><a href="/beers/<%=beer.id%>"><%= beer.name %></a></li>
+    <% end %>
 
 </div>
