@@ -7,10 +7,15 @@
 <form action="/beers/<%=@beer.id%>" method="POST">
 <input id="hidden" type="hidden" name="_method" value="patch">
 		<label>Name: </label><input type="text" name="name" id="name" value="<%=@beer.name%>" class="form-control">
+		<br>
 		<label>Brewery: </label><input type="text" name="brewery" id="brewery" value="<%=@beer.brewery.name%>" class="form-control">
+		<br>
 		<label>ABV: </label><input type="number" name="abv" id="abv" value="<%=@beer.abv%>" class="form-control">
+		<br>
 		<label>Style: </label><input type="text" name="style" id="style" value="<%=@beer.style%>" class="form-control">
+		<br>
 		<label>Description</label><input type="text" name="description" id="description" value="<%=@beer.description%>" class="form-control">
+		<br>
 
 		<input class="btn btn-secondary" type="submit" value="Submit">
 	</form>

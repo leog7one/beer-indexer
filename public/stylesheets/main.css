@@ -10,10 +10,10 @@
 
 
 
-.navbar-brand {
-    font-size: 150%;
-    padding-top: 10px
-}
+  .navbar-brand {
+      font-size: 150%;
+      padding-top: 10px
+  }
 
 
   .wrapper {
@@ -27,28 +27,23 @@
     width: 85%;
   }
 
-.booyah-box {
-  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
-  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
-  box-shadow: 1px 1px 2px 0 #d0d0d0;
-  background: rgb(239,200,74);
-  border: 1px solid #ccc;
-  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
-  margin-top: 10px;
-  margin-botttom: 15px;
-  padding: 20px;
-  text-align: center;
-}
+  .booyah-box {
+    -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+    -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+    box-shadow: 1px 1px 2px 0 #d0d0d0;
+    background: rgb(239,200,74);
+    border: 1px solid #ccc;
+    border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+    margin-top: 10px;
+    margin-botttom: 15px;
+    padding: 20px;
+    text-align: center;
+  }
 
-
-
-.form-group {
-    background-color: rgb(239,200,74);
-    padding: 15px;
-}
-
-
-
+  .form-group {
+      background-color: rgb(239,200,74);
+      padding: 15px;
+  }
 
   .branding {
     clear: both;
