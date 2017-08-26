@@ -87,8 +87,12 @@ class UsersController < ApplicationController
       @user = User.find_by_id(params[:id])
       @user.username = params[:username]
       @user.email = params[:email]
-      @user.password = params[:password]
-      @user.password_confirmation = params[:password]
+      if @user.authenticate(params[:old_password]) && 
+        params[:new_password] != "" && 
+        params[:new_password_confirmation] != ""
+          @user.password = params[:new_password]
+          @user.password_confirmation = params[:new_password_confirmation]
+      end
       @user.save
       redirect "/users/#{@user.id}"
     end

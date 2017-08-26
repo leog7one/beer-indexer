@@ -1,26 +1,32 @@
-
-<div class="form-group"> 
-  
-
-<h1>Edit User : <%= @user.username %></h3></h1>
-
-<form action="/users/<%=@user.id%>" method="POST">
-<input id="hidden" type="hidden" name="_method" value="patch">
-		<label>Username: </label><input type="text" name="username" id="username" value="<%=@user.username%>" class="form-control">
-		<br>
-		<label>Email: </label><input type="text" name="email" id="email" value="<%=@user.email%>" class="form-control">
-		<br>
-		<label>Password: </label><input type="text" name="password" id="password" class="form-control">
-    	<br>
-		<input class="btn btn-secondary" type="submit" value="Update Info" class="form-control">
+<div class="form-container"> 
+  	<h1>Edit User : <%= @user.username %></h1>
+	<form action="/users/<%=@user.id%>" method="POST">
+		<input id="hidden" type="hidden" name="_method" value="patch">
+		<div class="form-group">
+			<label>Username: </label>
+			<input type="text" name="username" id="username" value="<%=@user.username%>" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Email: </label>
+			<input type="text" name="email" id="email" value="<%=@user.email%>" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>Old Password: </label>
+			<input type="password" name="old_password" id="password" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>New Password: </label>
+			<input type="password" name="new_password" id="password" class="form-control">
+		</div>
+		<div class="form-group">
+			<label>New Password Confirmation: </label>
+			<input type="password" name="new_password_confirmation" id="password" class="form-control">
+		</div>
+		<input class="btn btn-secondary" type="submit" value="Update Info">
 	</form>
-
     </br>
-<form method="post" action="/users/<%=@user.id%>"  >
- 	<input id="hidden" type="hidden" name="_method" value="delete">
-
- 	<input class="btn btn-secondary" type="submit" value="Delete User" class="form-control">
- </form>
-
-    </div>
-    
+	<form method="post" action="/users/<%=@user.id%>"  >
+ 		<input id="hidden" type="hidden" name="_method" value="delete">
+ 		<input class="btn btn-secondary" type="submit" value="Delete User" class="form-control">
+ 	</form>
+</div>
